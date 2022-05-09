@@ -1,0 +1,16 @@
+1)pip install virtualenv
+2)Activate Env EnvName\scripts\activate
+3)pip install django
+4)pip install djangorestframework
+5)pip install django-phonenumber-field
+6)pip install phonenumbers
+7)pip install django-crispy-forms
+8)pip install pillow
+9)pip install django-session-timeout
+
+
+**PDBC**
+3)pip install mysqlclient
+**ORM**
+4)pip install sqlalchemy
+

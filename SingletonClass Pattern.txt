@@ -1,0 +1,40 @@
+***Singletone Class***
+
+    **models.py**
+
+class SingletonBaseModel(models.Model):
+    class Meta:
+        abstract = True
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        pass
+
+    @classmethod
+    def load(cls):
+        obj, created = cls.objects.get_or_create(pk=1)
+        return obj
+
+class SiteSetting(SingletonBaseModel):
+    site_name = models.CharField(max_length=100)
+
+
+    **In App Folder**
+create **context_processor.py**
+
+from .models import SiteSetting
+
+def site_settings(request):
+    return {
+        "site_settings": SiteSetting.load()
+    }
+
+
+**admim.py**
+
+from .models import SiteSetting
+
+admin.site.register(SiteSetting)
